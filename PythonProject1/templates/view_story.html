@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ story.title }}</h2>
+    <p class="text-muted">ავტორი: {{ story.author.username }}</p>
+
+    <div class="card p-3 mb-3">
+        <p>{{ story.content }}</p>
+    </div>
+
+        <!-- 💾 დამახსოვრება -->
+        <form action="{{ url_for('save_story', story_id=story.id) }}" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-outline-primary">💾</button>
+        </form>
+
+        <!-- ✏️ რედაქტირება მხოლოდ ავტორისთვის -->
+        {% if story.author.id == current_user.id %}
+        <a href="{{ url_for('edit_story', story_id=story.id) }}" class="btn btn-outline-success">✏️ რედაქტირება</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>რედაქტირება: {{ story.title }}</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.title.label }} {{ form.title(size=64) }}<br>
+    {{ form.content.label }} {{ form.content(rows=10) }}<br>
+    <button type="submit" class="btn btn-primary">შენახვა</button>
+  </form>
+{% endblock %}

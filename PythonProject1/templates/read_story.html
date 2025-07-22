@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="section-title">{{ story.title }}</h2>
+<p class="story-content">{{ story.content }}</p>
+<div class="story-buttons center">
+    <form method="post" action="{{ url_for('save', story_id=story.id) }}">
+        <button type="submit" class="story-action">💾 შენახვა</button>
+    </form>
+</div>
+{% endblock %}

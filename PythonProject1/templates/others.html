@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>სხვების ზღაპრები</h2>
+{% for story in stories %}
+  <div class="story">
+    <h3>{{ story.title }}</h3>
+    <p>{{ story.content[:100] }}...</p>
+    <a href="{{ url_for('view', story_id=story.id) }}">ნახვა</a>
+    <a href="{{ url_for('save', story_id=story.id) }}">💾</a>
+  </div>
+{% else %}
+  <p>სხვების ზღაპრები ჯერ არ არსებობს.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,29 @@
+<!-- templates/saved_stories.html -->
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container mt-4">
+    <h2>შენახული ზღაპრები</h2>
+
+    {% if stories %}
+      <div class="row">
+        {% for story in stories %}
+          <div class="col-md-6 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{ story.title }}</h5>
+                <p class="card-text">{{ story.content[:200] }}...</p>
+                <a href="{{ url_for('view_story', story_id=story.id) }}" class="btn btn-primary">ნახვა</a>
+                  <button type="submit" class="btn btn-outline-danger">
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>ჯერ არცერთი ზღაპარი არ გაქვს შენახული.</p>
+    {% endif %}
+  </div>
+{% endblock %}

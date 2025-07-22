@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="section-title">შესვლა</h2>
+<form method="post" class="form-box">
+    {{ form.hidden_tag() }}
+    <p>{{ form.username.label }}<br>{{ form.username(class_='input-field') }}</p>
+    <p>{{ form.password.label }}<br>{{ form.password(class_='input-field') }}</p>
+    <p><button type="submit" class="form-submit">შესვლა</button></p>
+</form>
+{% endblock %}

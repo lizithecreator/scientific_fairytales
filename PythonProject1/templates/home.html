@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="section-title">შენი ზღაპრები</h2>
+{% if stories %}
+    <ul class="story-list">
+        {% for story in stories %}
+            <li class="story-box">
+                <h3 class="story-title">{{ story.title }}</h3>
+                <div class="story-buttons center">
+                    <a class="story-action" href="{{ url_for('read_story', story_id=story.id) }}">📖 ნახვა</a>
+                    <form action="{{ url_for('delete_story', story_id=story.id) }}" method="post">
+                        <button type="submit" class="story-action">🗑 წაშლა</button>
+                    </form>
+                    <form method="post" action="{{ url_for('save', story_id=story.id) }}">
+                        <button type="submit" class="story-action">💾 შენახვა</button>
+                    </form>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="no-stories">ჯერ ზღაპარი არ გაქვს დამატებული.</p>
+{% endif %}
+<a class="add-button center-button" href="{{ url_for('add') }}">➕ დაამატე ზღაპარი</a>
+{% endblock %}

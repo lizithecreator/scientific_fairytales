@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="section-title">ზღაპრის დამატება</h2>
+<form method="post" class="form-box">
+    {{ form.hidden_tag() }}
+    <p>{{ form.title.label }}<br>{{ form.title(class_='input-field') }}</p>
+    <p>{{ form.content.label }}<br>{{ form.content(class_='textarea-field') }}</p>
+    <p><button type="submit" class="form-submit">დამატება</button></p>
+</form>
+{% endblock %}
